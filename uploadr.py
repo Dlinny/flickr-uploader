@@ -103,6 +103,7 @@ FILE_MAX_SIZE = eval(config.get('Config','FILE_MAX_SIZE'))
 MANAGE_CHANGES = eval(config.get('Config','MANAGE_CHANGES'))
 RAW_TOOL_PATH = eval(config.get('Config','RAW_TOOL_PATH'))
 CONVERT_RAW_FILES = eval(config.get('Config','CONVERT_RAW_FILES'))
+DELETE_REMOTE = eval(config.get('Config','DELETE_REMOTE'))
 
 #print FILES_DIR
 #print FLICKR
@@ -349,6 +350,10 @@ class Uploadr:
         if not exists, delete photo from fickr
         http://www.flickr.com/services/api/flickr.photos.delete.html
         """
+        
+        if ( not DELETE_REMOTE ):
+            print("*****Skip removing deleted files*****")
+            return False
 
         print("*****Removing deleted files*****")
 
